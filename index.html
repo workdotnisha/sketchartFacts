@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>10 Fun Facts About Sketch Art</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.fact {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-left: 4px solid #007bff;
+  background-color: #e9ecef;
+  border-radius: 4px;
+}
+
+.fact h3 {
+  margin-top: 0;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>10 Fun Facts About Sketch Art</h1>
+
+    <div id="factsContainer">
+      </div>
+  </div>
+
+  <script>
+    const facts = [
+      {"fact": "Sketching is the foundation of many art forms.", "details": "It's often the first step in the artistic process, used to capture ideas, plan compositions, and study subjects."},
+      {"fact": "Sketches can be both finished pieces and studies for larger works.", "details": "While some sketches are quick impressions, others are highly detailed and considered complete artworks."},
+      {"fact": "A variety of tools can be used for sketching.", "details": "Common tools include pencils, charcoal, pastels, pens, and even digital styluses."},
+      {"fact": "There are many different sketching techniques.", "details": "These include hatching, cross-hatching, stippling, scribbling, and blending, each creating unique effects."},
+      {"fact": "Sketching helps develop hand-eye coordination and observation skills.", "details": "Artists train their eyes to see detail and translate that onto paper through sketching."},
+      {"fact": "Famous artists throughout history were avid sketchers.", "details": "Leonardo da Vinci's notebooks, for example, are filled with detailed sketches of anatomy, inventions, and nature."},
+      {"fact": "Sketching is a great way to relax and de-stress.", "details": "The act of drawing can be meditative, allowing for focus and creative expression."},
+      {"fact": "Sketches can be used for a wide range of purposes.", "details": "From architectural blueprints to fashion design to storyboarding for animation, sketching is a versatile tool."},
+      {"fact": "Digital sketching is becoming increasingly popular.", "details": "Software like Procreate and Adobe Fresco offer a wide array of tools and effects for digital artists."},
+      {"fact": "Anyone can learn to sketch.", "details": "With practice and patience, anyone can develop their sketching skills and enjoy the creative process."}
+    ];
+
+    const factsContainer = document.getElementById('factsContainer');
+
+    facts.forEach(fact => {
+      const factElement = `
+        <div class="fact">
+          <h3>${fact.fact}</h3>
+          <p>${fact.details}</p>
+        </div>
+      `;
+      factsContainer.innerHTML += factElement;
+    });
+  </script>
+</body>
+</html>
