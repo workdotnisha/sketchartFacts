@@ -1,48 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>10 Fun Facts About Sketch Art</title>
-<style>
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
+  <title>10 Fun Facts About Sketch Art</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #343a40;
+    }
 
-.container {
-  max-width: 800px;
-  margin: 20px auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
 
-h1 {
-  text-align: center;
-  color: #333;
-}
+    h1 {
+      color: #212529;
+    }
 
-.fact {
-  margin-bottom: 20px;
-  padding: 15px;
-  border-left: 4px solid #007bff;
-  background-color: #e9ecef;
-  border-radius: 4px;
-}
+    .fact {
+      margin-bottom: 20px;
+      padding: 15px;
+      border-left: 4px solid #007bff;
+      background-color: #e9ecef;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
 
-.fact h3 {
-  margin-top: 0;
-}
-</style>
+    .fact:hover {
+      background-color: #ced4da;
+    }
+
+    .fact h3 {
+      margin-top: 0;
+      color: #212529;
+    }
+
+    .nav-btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>10 Fun Facts About Sketch Art</h1>
-
     <div id="factsContainer">
-      </div>
+    </div>
+    <button id="prevBtn" class="nav-btn">Previous</button>
+    <button id="nextBtn" class="nav-btn">Next</button>
   </div>
 
   <script>
@@ -60,16 +88,35 @@ h1 {
     ];
 
     const factsContainer = document.getElementById('factsContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-    facts.forEach(fact => {
-      const factElement = `
-        <div class="fact">
-          <h3>${fact.fact}</h3>
-          <p>${fact.details}</p>
-        </div>
-      `;
-      factsContainer.innerHTML += factElement;
-    });
+    let currentFactIndex = 0;
+
+    function showFact(index) {
+      if (index >= 0 && index < facts.length) {
+        const fact = facts[index];
+        factsContainer.innerHTML = `
+          <div class="fact">
+            <h3>${fact.fact}</h3>
+            <p>${fact.details}</p>
+          </div>
+        `;
+        currentFactIndex = index;
+        updateButtonState();
+      }
+    }
+
+    function updateButtonState() {
+      prevBtn.disabled = currentFactIndex === 0;
+      nextBtn.disabled = currentFactIndex === facts.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => showFact(currentFactIndex - 1));
+    nextBtn.addEventListener('click', () => showFact(currentFactIndex + 1));
+
+    // Initial display
+    showFact(currentFactIndex);
   </script>
 </body>
 </html>
